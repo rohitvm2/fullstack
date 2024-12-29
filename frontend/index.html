@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Full Stack Website</title>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    button{
+      width: 60%;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: rgb(99, 99, 244);
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <button id="getMessageBtn">Get Message from Server</button>
+  <div id="message"></div>
+  <script>
+    document.getElementById("getMessageBtn").addEventListener("click",async () => {
+      const response = await fetch('http://localhost:5000/message');
+      const data = await response.json();
+      document.getElementById("message").textContent = data.message;
+    });
+  </script>
+</body>
+</html>
